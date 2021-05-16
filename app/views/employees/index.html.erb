@@ -1,0 +1,44 @@
+
+
+<h1>Employees</h1>
+
+<table class="table table-hover">
+  <thead class="table-secondary">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Employee type</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Skype</th>
+      <th>User Id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <% if employee.user == current_user %>
+      <tr>
+        <td><%= employee.first_name %></td>
+        <td><%= employee.last_name %></td>
+        <td><%= employee.employee_type %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.phone %></td>
+        <td><%= employee.skype %></td>
+        <td><%= employee.user_id %></td>
+
+        <td><%= link_to 'Show', employee %></td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add New Employee' , new_employee_path , class:"btn btn-primary" %>
+
+
